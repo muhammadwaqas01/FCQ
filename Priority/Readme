@@ -1,1 +1,52 @@
+Priority-Based Resource Allocation Simulation
+This project simulates a priority-based resource allocation system within the OMNeT++ simulation framework. It models the behavior of an abstract queue system, managing message processing and resource allocation by assigning resources to high-priority jobs first. Statistics on message wait times, resource occupation, and performance metrics are also recorded and analyzed.
 
+Getting Started
+To clone or run this priority-based resource allocation simulation, you must first install OMNeT++.
+
+Installation
+Download OMNeT++ from the official website: OMNeT++ Downloads
+For detailed installation instructions on your specific machine, please visit the OMNeT++ Documentation.
+Components
+AbstractFifo.cc
+Despite its name, this file has been adapted to define the behavior of an abstract priority-based queue system in the simulation environment. It focuses on message processing, resource allocation to high-priority jobs, and statistics recording. It supports dynamic checking and adjustments based on message priority and resource requirements.
+
+AbstractFifo.h
+This header file defines the AbstractFifo class, serving as an abstract base for a priority-based queue management system in simulations. It emphasizes handling, servicing, and logging messages with functionalities tailored to dynamic resource allocation based on job priority and performance tracking.
+
+Fifo.cc
+Defines the Fifo class, which, in the context of this simulation, manages operations for a priority-based queue, not a FIFO queue. It includes initializing signal registration for message processing, drop metrics across different sources, and managing the lifecycle events of job service based on priority.
+
+Fifo.h
+This header file extends the AbstractFifo class to implement a priority-based queue management system, focusing on allocating resources to high-priority messages and managing the service lifecycle of messages based on their priority.
+
+Fifo.ned
+Defines a module in OMNeT++ for the priority-based queue management system with operation parameters and gates for message input/output, including monitoring for dropped messages based on priority.
+
+Sink.cc
+Registers signals for messages processed based on priority from various sources. It handles incoming messages by calculating their lifetime, priority, and emitting corresponding signals before deletion.
+
+Sink.ned
+Outlines a Sink module with parameters for visual representation and signals for tracking processed messages based on priority from different sources, alongside an input gate.
+
+Source.cc & Source1.cc
+Both files implement a Source class that generates jobs with specific resource requirements, service times, and priorities, scheduling them based on an interarrival time. Emits a signal every time a high-priority job is generated.
+
+Source.ned & Source1.ned
+Defines network components and their interactions for the Source modules, detailing the structure and function of the simulation's job generation with an emphasis on priority.
+
+omnetpp.ini
+Provides the configuration parameters for the simulation, such as simulation time limit, arrival times, service times, and priorities, among other settings.
+
+Running the Simulation
+After installing OMNeT++ and cloning this repository, navigate to the project directory and use the OMNeT++ IDE or command line tools to compile and run the simulation according to the provided omnetpp.ini configuration.
+
+Contributing
+Please read CONTRIBUTING.md for details on our code of conduct and the process for submitting pull requests to us.
+
+License
+This project is licensed under the MIT License - see the LICENSE.md file for details.
+
+Acknowledgments
+OMNeT++ community for providing the simulation framework and documentation.
+Contributors and developers of this priority-based resource allocation simulation project.

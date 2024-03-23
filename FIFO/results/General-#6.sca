@@ -1,0 +1,84 @@
+version 3
+run General-6-20231126-23:27:09-50004
+attr configname General
+attr datetime 20231126-23:27:09
+attr datetimef 20231126-232709
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network SingleQueue
+attr processid 50004
+attr repetition 6
+attr replication #6
+attr resultdir results
+attr runnumber 6
+attr seedset 6
+config sim-time-limit 5000000s
+config description "low job arrival rate"
+config network SingleQueue
+config **.source.interarrivalTime exponential(3.0303s)
+config **.source1.interarrivalTime exponential(0.3367s)
+config **.source.serviceTime exponential(10s)
+config **.source1.serviceTime exponential(1s)
+config **.fifo.bufferSize 512
+config **.source.requiredResource 64
+config **.source1.requiredResource 1
+config **.sink.msgProcessedFromSource.record count
+config **.sink.msgProcessedFromSource1.record count
+config **.fifo.resourceCapacity 256
+config **.fifo.checkInterval 0.25s
+config **.fifo.avgResourceOccupation.record scalar
+config **.fifo.avgWaitTimeFromSourceSignal.record scalar
+config **.fifo.avgWaitTimeFromSource1Signal.record scalar
+config repeat 30
+
+par SingleQueue.source typename "\"Source\""
+par SingleQueue.source interarrivalTime exponential(3.0303s)
+attr unit s
+par SingleQueue.source serviceTime exponential(10s)
+attr unit s
+par SingleQueue.source requiredResource 64
+scalar SingleQueue.source msgGenerated:count 1649383
+attr recordingmode count
+attr title "messages generated, count"
+par SingleQueue.source1 typename "\"Source1\""
+par SingleQueue.source1 interarrivalTime exponential(0.3367s)
+attr unit s
+par SingleQueue.source1 serviceTime exponential(1s)
+attr unit s
+par SingleQueue.source1 requiredResource 1
+scalar SingleQueue.source1 msgGenerated:count 14848103
+attr recordingmode count
+attr title "messages generated, count"
+par SingleQueue.fifo typename "\"Fifo\""
+par SingleQueue.fifo checkInterval 0.25s
+attr unit s
+par SingleQueue.fifo bufferSize 512
+par SingleQueue.fifo resourceCapacity 256
+scalar SingleQueue.fifo AveragePacketsInProgress 6.24821485
+scalar SingleQueue.fifo SourceAvgWaitTime 46.451488124924
+scalar SingleQueue.fifo SourceThrougput 0
+scalar SingleQueue.fifo Source1AvgWaitTime 44.917021899937
+scalar SingleQueue.fifo Source1Througput 2
+scalar SingleQueue.fifo avgResourceOccupation 213.35956195
+scalar SingleQueue.fifo "Resource Utilization" 0.83343578886719
+scalar SingleQueue.fifo "Cumulative Wait" 2491533.6741878
+scalar SingleQueue.fifo "Wait Penalty Percentage" 0.498306734837
+scalar SingleQueue.fifo msgDroppedFromSource1:count 51417
+attr recordingmode count
+attr title "messages dropped from source1, count"
+scalar SingleQueue.fifo msgDroppedFromSource:count 5631
+attr recordingmode count
+attr title "messages dropped from source, count"
+par SingleQueue.sink typename "\"Sink\""
+scalar SingleQueue.sink msgProcessedFromSource1:count 14796569
+attr recordingmode count
+attr title "messages processed from source1, count"
+scalar SingleQueue.sink msgProcessedFromSource:count 1643733
+attr recordingmode count
+attr title "messages processed from source, count"
+par SingleQueue typename "\"SingleQueue\""
+
